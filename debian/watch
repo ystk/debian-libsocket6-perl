@@ -1,0 +1,4 @@
+version=3
+opts=dversionmangle=s/\+ds$// \
+https://metacpan.org/release/Socket6 \
+.*/Socket6-(\d[^\s/]*)\.(?:tar\.xz|txz|tar\.bz2|tbz2|tar\.gz|tgz)

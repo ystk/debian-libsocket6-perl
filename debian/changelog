@@ -1,3 +1,58 @@
+libsocket6-perl (0.25-1) unstable; urgency=low
+
+  * Imported Upstream version 0.25
+  * New maintainer (Closes: #738885)
+  * Bump standards version to 3.9.5 (no changes)
+  * [11eaa0be] debian/control
+                  + Add homepage field
+  * Install socket6(3) manpage (Closes: #694083)
+  * [8ee3ba01] Import patch to add missing IPv6 constants 
+		(Closes: #569981 LP: #522191) 
+		Thanks to David Madore for the patch
+  * [c5f9120a] Update debian/watch
+  * [71f53f90] debian/control 
+		  + Add VCS fields
+  * [24b9fbe0] debian/copyright
+                  + Convert to machine readable format
+  * [a2d90858] Use https://metacpan.org/release/Socket6 in 
+		d/control, d/copyright, d/watch
+  * [1a66281f] Remove obsolete postinst script
+  * [748e7406] Correct licence name to BSD-3-Clause
+  * [c0eeedec] Complete copyrights for Upstream sources
+  * [f01ff881] Move debian/* copyright to end and complete all 
+	       	copyright holders
+  * [e4c2b323] Reduce debian/rules to minimal format
+  * [ef54d313] Add debian/clean
+  * [60cc876d] Add debian/libsocket6-perl.examples
+  * [362ba811] debian/control   
+		  + Modify build-depends
+		  + Remove perl-base from Depends
+		  + Modify description to include the module name
+  * [a8b2cf87] Remove unneeded README.Debian
+  * [b527fae1] Remove override and add build-system to debian/rules
+
+ -- Daniel Lintott <daniel@serverb.co.uk>  Sun, 16 Feb 2014 12:07:30 +0000
+
+libsocket6-perl (0.23+ds-0+nmu1) unstable; urgency=low
+
+  [ Cyril Brulebois ]
+  * Non-maintainer upload.
+  * Switch to upstream tarball, using “ds” for “debian source” as a
+    suffix since dak wouldn't appreciate different tarballs having
+    the same name.
+  * Add watch file.
+  * Drop dbs from build-depends, and kill some dbs bits in debian/rules,
+    adjusting clean accordingly (closes: #576062).
+
+  [ Robert Luberda ]
+  * Prepare this NMU based on Cyril's version from #576062 in order to
+    get rid of dbs build-dependency. Upload it to DELAYED/10.
+  * Switch to the 3.0 (quilt) source format.
+  * Switch to debhelper v9 and its tiny rules format.
+  * Bump Standards-Version to 3.9.4.
+
+ -- Robert Luberda <robert@debian.org>  Sun, 22 Sep 2013 12:57:43 +0200
+
 libsocket6-perl (0.23-1) unstable; urgency=low
 
   * New upstream release. (closes: #531009)

@@ -1,0 +1,161 @@
+Description: IPv6 Constants missing from Socket6 
+ The SOL_IPV6(=IPPROTO_IPV6)-level constants for setsockopt which are
+ documented in ipv6(7) under Linux, many of which are common to other
+ operating systems, are not defined by the Socket6 module, as they
+ probably should.
+Author: David Madore <david+bugs@madore.org>
+Origin: Vendor
+Bug: https://rt.cpan.org/Public/Bug/Display.html?id=54629
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=569981
+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/libsocket6-perl/+bug/522191
+Last-Update: 2014-02-14
+---
+Index: socket6/Socket6.pm
+===================================================================
+--- socket6.orig/Socket6.pm	2014-02-14 15:13:44.000407752 +0000
++++ socket6/Socket6.pm	2014-02-14 15:17:38.601458417 +0000
+@@ -260,6 +260,25 @@
+ 	IPV6_AUTH_NETWORK_LEVEL
+ 	IPV6_ESP_NETWORK_LEVEL
+ 	IPV6_ESP_TRANS_LEVEL
++	IPV6_ADDRFORM
++	IPV6_ADD_MEMBERSHIP
++	IPV6_DROP_MEMBERSHIP
++	IPV6_MTU
++	IPV6_MTU_DISCOVER
++	IPV6_MULTICAST_HOPS
++	IPV6_MULTICAST_IF
++	IPV6_MULTICAST_LOOP
++	IPV6_PKTINFO
++	IPV6_RTHDR
++	IPV6_AUTHHDR
++	IPV6_DSTOPS
++	IPV6_HOPOPTS
++	IPV6_FLOWINFO
++	IPV6_HOPLIMIT
++	IPV6_RECVERR
++	IPV6_ROUTER_ALERT
++	IPV6_UNICAST_HOPS
++	IPV6_V6ONLY
+ 	NI_NOFQDN
+ 	NI_NUMERICHOST
+ 	NI_NAMEREQD
+Index: socket6/Socket6.xs
+===================================================================
+--- socket6.orig/Socket6.xs	2014-02-14 15:13:44.000407752 +0000
++++ socket6/Socket6.xs	2014-02-14 15:17:38.601458417 +0000
+@@ -368,6 +368,114 @@
+ #else
+ 	    goto not_there;
+ #endif
++	if (strEQ(name, "IPV6_ADDRFORM"))
++#ifdef IPV6_ADDRFORM
++	    return IPV6_ADDRFORM;
++#else
++	    goto not_there;
++#endif
++	if (strEQ(name, "IPV6_DROP_MEMBERSHIP"))
++#ifdef IPV6_DROP_MEMBERSHIP
++	    return IPV6_DROP_MEMBERSHIP;
++#else
++	    goto not_there;
++#endif
++	if (strEQ(name, "IPV6_MTU"))
++#ifdef IPV6_MTU
++	    return IPV6_MTU;
++#else
++	    goto not_there;
++#endif
++	if (strEQ(name, "IPV6_MTU_DISCOVER"))
++#ifdef IPV6_MTU_DISCOVER
++	    return IPV6_MTU_DISCOVER;
++#else
++	    goto not_there;
++#endif
++	if (strEQ(name, "IPV6_MULTICAST_HOPS"))
++#ifdef IPV6_MULTICAST_HOPS
++	    return IPV6_MULTICAST_HOPS;
++#else
++	    goto not_there;
++#endif
++	if (strEQ(name, "IPV6_MULTICAST_IF"))
++#ifdef IPV6_MULTICAST_IF
++	    return IPV6_MULTICAST_IF;
++#else
++	    goto not_there;
++#endif
++	if (strEQ(name, "IPV6_MULTICAST_LOOP"))
++#ifdef IPV6_MULTICAST_LOOP
++	    return IPV6_MULTICAST_LOOP;
++#else
++	    goto not_there;
++#endif
++	if (strEQ(name, "IPV6_PKTINFO"))
++#ifdef IPV6_PKTINFO
++	    return IPV6_PKTINFO;
++#else
++	    goto not_there;
++#endif
++	if (strEQ(name, "IPV6_RTHDR"))
++#ifdef IPV6_RTHDR
++	    return IPV6_RTHDR;
++#else
++	    goto not_there;
++#endif
++	if (strEQ(name, "IPV6_AUTHHDR"))
++#ifdef IPV6_AUTHHDR
++	    return IPV6_AUTHHDR;
++#else
++	    goto not_there;
++#endif
++	if (strEQ(name, "IPV6_DSTOPS"))
++#ifdef IPV6_DSTOPS
++	    return IPV6_DSTOPS;
++#else
++	    goto not_there;
++#endif
++	if (strEQ(name, "IPV6_HOPOPTS"))
++#ifdef IPV6_HOPOPTS
++	    return IPV6_HOPOPTS;
++#else
++	    goto not_there;
++#endif
++	if (strEQ(name, "IPV6_FLOWINFO"))
++#ifdef IPV6_FLOWINFO
++	    return IPV6_FLOWINFO;
++#else
++	    goto not_there;
++#endif
++	if (strEQ(name, "IPV6_HOPLIMIT"))
++#ifdef IPV6_HOPLIMIT
++	    return IPV6_HOPLIMIT;
++#else
++	    goto not_there;
++#endif
++	if (strEQ(name, "IPV6_RECVERR"))
++#ifdef IPV6_RECVERR
++	    return IPV6_RECVERR;
++#else
++	    goto not_there;
++#endif
++	if (strEQ(name, "IPV6_ROUTER_ALERT"))
++#ifdef IPV6_ROUTER_ALERT
++	    return IPV6_ROUTER_ALERT;
++#else
++	    goto not_there;
++#endif
++	if (strEQ(name, "IPV6_UNICAST_HOPS"))
++#ifdef IPV6_UNICAST_HOPS
++	    return IPV6_UNICAST_HOPS;
++#else
++	    goto not_there;
++#endif
++	if (strEQ(name, "IPV6_V6ONLY"))
++#ifdef IPV6_V6ONLY
++	    return IPV6_V6ONLY;
++#else
++	    goto not_there;
++#endif
+ 	break;
+     case 'N':
+ 	if (strEQ(name, "NI_NOFQDN"))
